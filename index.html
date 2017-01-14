@@ -12,6 +12,7 @@ var pokemonid = 0;
 var pokemonheight = 0;
 var pokemonweight = 0;
 var pokemonname = 0;
+var pokemonweaknessBG = 0;
 
 //setting colours for types of pokemon
  var groundbrown = 'rgb(210, 179, 92)';
@@ -59,7 +60,6 @@ var pokemonname = 0;
 		  	$('.pokemontype1').html(pokemontype1).css("display","inline");
 		  }
 
-		  console.log(pokemontype1);
 		  switch(pokemontype1) {
 			    case "ground":
 			        document.body.style.setProperty('--main-bg-color', groundbrown);
@@ -126,7 +126,6 @@ var pokemonname = 0;
 
 		 for (var i = 0; i < data.abilities.length; i++){
 	  		pokemonabilities = data.abilities[i].ability.name;
-	  		console.log(pokemonabilities);
 	  		$('.pokeabilities').append(pokemonabilities + "<br>");
 	     }
 
@@ -136,10 +135,74 @@ var pokemonname = 0;
 		  	$('.pokemonweakness').html("");
 
 
+
 		  	for (var i = 0; i < data.damage_relations.double_damage_from.length; i++){
 		  		pokemonweakness = data.damage_relations.double_damage_from[i].name;
-		  		$('.pokemonweakness').append("<span class='pokemontype1' style='background-color:" +pokemonweakness +"; display:inline;'>" + pokemonweakness + "</span> ");
+
+		  	//Setting background colours of weaknesses
+		  	switch(pokemonweakness) {
+			    case "ground":
+			        pokemonweaknessBG =  groundbrown;
+			        break;
+			    case "grass":
+			 	    pokemonweaknessBG =  grassgreen;
+			        break;			    
+			    case "poison":
+			 	    pokemonweaknessBG =  poisonpurple;
+			        break;			   
+			    case "fire":
+			 	    pokemonweaknessBG =  firered;
+			        break;			    
+			    case "flying":
+			 	    pokemonweaknessBG =  flyingteal;
+			        break;			    
+			    case "water":
+			 	    pokemonweaknessBG =  waterblue;
+			        break;			    
+			    case "bug":
+			 	    pokemonweaknessBG =  buggreen;
+			        break;			    
+			    case "normal":
+			 	    pokemonweaknessBG =  normalgrey;
+			        break;			    
+			    case "electric":
+			 	    pokemonweaknessBG = electricyellow;
+			        break;			   
+			    case "fairy":
+			 	    pokemonweaknessBG =  fairypink;
+			        break;			   
+			    case "fighting":
+			 	    pokemonweaknessBG =  fightingbrown;
+			        break;			    
+			    case "psychic":
+			 	    pokemonweaknessBG =  psychicpink;
+			        break;			    
+			    case "rock":
+			 	    pokemonweaknessBG = rockbrown;
+			        break;			    
+			    case "ice":
+			 	    pokemonweaknessBG =  iceteal;
+			        break;			    
+			    case "ghost":
+			 	    pokemonweaknessBG =  ghostpurple;
+			        break;			     
+			    case "dragon":
+			 	    pokemonweaknessBG =  dragonblue;
+			        break;			    
+			    case "steel":
+			 	    pokemonweaknessBG =  steelgrey;
+			        break;			    
+			    case "dark":
+			 	    pokemonweaknessBG =  darkblack;
+			        break;
+			    default:
+			        pokemonweaknessBG =  firered;
+			}
+
+
+		  		$('.pokemonweakness').append("<span class='pokemontype1' style='background-color:" +pokemonweaknessBG +"; display:inline;'>" + pokemonweakness + "</span> ");
 		  	}
+
 
 		  });
 
@@ -149,8 +212,6 @@ var pokemonname = 0;
 		  $('.pokesprite').html('<img src="' + pokemonsprite + '">');
 
 
-		  alert( "Load was performed." );
-		  console.log(data);
 		});
 	}
 
@@ -161,9 +222,9 @@ var pokemonname = 0;
 		height: 100%;
 		padding: 0;
 		margin: 0;
-		background-color: #7AB1E7;
+		background-color: #157991;
 		font-family: sans-serif;
-		--main-bg-color: red;
+		--main-bg-color: #9C0000;
 	}
 
 
@@ -171,7 +232,7 @@ var pokemonname = 0;
 		border: 1px solid;
 		background-color: white;
 		border-radius: 20px;
-		width: 40%;
+		width: 300px;
 		margin: auto;
 		-webkit-box-shadow: -10px 10px 13px 1px rgba(0,0,0,0.75);
 		-moz-box-shadow: -10px 10px 13px 1px rgba(0,0,0,0.75);
@@ -218,7 +279,6 @@ var pokemonname = 0;
 
 	.pokemontype1 {
 		background-color: var(--main-bg-color);
-
 		padding: 10px;
 		border-radius: 15px;
 		display: none;
@@ -226,12 +286,48 @@ var pokemonname = 0;
 	}
 
 	.pokemontype2 {
-
 		padding: 10px;
 		border-radius: 15px;
 		display: none;
 		color:white;
 	}
+
+	.SubmissionBox {
+		border: 1px solid;
+		border-radius: 5px;
+		overflow: hidden;
+		text-align:  center;	
+		width: 	200px;
+		background-color: white;
+		padding: 10px;
+		margin: auto;
+		margin-top: 20px;
+		margin-bottom: 	20px;	
+		-webkit-box-shadow: -10px 10px 13px 1px rgba(0,0,0,0.75);
+	    -moz-box-shadow: -10px 10px 13px 1px rgba(0,0,0,0.75);
+	    box-shadow: -10px 10px 13px 1px rgba(0,0,0,0.75);
+
+	}
+
+	#pokeidentifier {
+		margin: 10px;
+	}
+
+	.SubmitButton {
+	background-color: #9C0000; /* Green */
+    border-radius: 	10px;
+    color: white;
+    padding: 10px;
+    align-content: 	center;
+    text-align: center;
+    display: inline-block;
+    font-size: 16px;
+    margin: auto;
+
+
+	}
+
+
 
 </style>
 
@@ -240,10 +336,14 @@ var pokemonname = 0;
 <body>
 
 
-	<label>Please enter the name / number of your pokemon
-	<input type="text" id="pokeidentifier" name="pokeidentifier" placeholder="Search for Pokemon / ID"></label>
+<div class="SubmissionBox">
+	<!-- 	<form onsubmit="GetPokeNumber()"> -->
+				<label for="pokeidentifier">Please enter the name / number of your pokemon</label>
+				<input type="text" id="pokeidentifier" name="pokeidentifier" placeholder="Search for Pokemon / ID">		
 
-	<button type="submit" onclick="GetPokeNumber()"> Submit </button>
+			<button type="submit" class="SubmitButton" onclick="GetPokeNumber()"> Submit </button>
+	<!-- </form> -->
+</div>
 
 
 <div class="result">
