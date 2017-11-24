@@ -1,4 +1,4 @@
-const POKEAPIURL = 'https://pokeapi.co/api/v2/pokemon/'
+const POKEAPIURL = 'https://pokeapi.co/api/v2'
 var pokemonid = 0;
 var pokemonheight = 0;
 var pokemonweight = 0;
@@ -28,10 +28,10 @@ let pokemonColours = {
 
 }
 
-function GetPokeNumber() {
+const GetPokeNumber = () => {
   var pokeidentifier = document.getElementById('pokeidentifier').value;
 
-  fetch(POKEAPIURL + pokeidentifier)
+  fetch(POKEAPIURL + "/pokemon/" + pokeidentifier)
     .then(resp => {
       if (resp.status === 200) {
         return resp.json()
@@ -40,7 +40,6 @@ function GetPokeNumber() {
       }
     })
     .then(responseBody => {
-      console.log(responseBody)
       pokemonID = responseBody.id;
       pokemonHeight = responseBody.height;
       pokemonWeight = responseBody.weight;
@@ -52,12 +51,9 @@ function GetPokeNumber() {
       pokemonType = responseBody.types;
       $(`.pokemontype0`).html(pokemonType).css("display", "none")
       $(`.pokemontype1`).html(pokemonType).css("display", "none")
-      console.log(pokemonType)
 
-      for(pokemon in pokemonType) {
+      for (pokemon in pokemonType) {
         pokemonsType = pokemonType[pokemon].type.name;
-        console.log(pokemonsType)
-        console.log(`.pokemontype${pokemon}`)
         $(`.pokemontype${pokemon}`).html(pokemonsType).css("display", "inline");
         document.body.style.setProperty(`--main-bg-color${pokemon}`, pokemonColours[pokemonsType])
       }
@@ -75,85 +71,35 @@ function GetPokeNumber() {
       $('.pokeheight').html(pokemonHeight);
       $('.pokesprite').html('<img src="' + pokemonSprite + '">');
 
+      return pokemonType
+    })
+    .then(getWeakness)
+    .catch(err => console.error(err))
+}
 
+
+const getWeakness = (pokemonType) => {
+
+  fetch(POKEAPIURL + "/type/" + pokemonType[0].type.name)
+    .then(resp => {
+      if (resp.status === 200) {
+        return resp.json()
+      } else {
+        return console.error('Error fetching from POKE API')
+      }
+    })
+    .then(responseBody => {
+
+      $('.pokemonweakness').html("");
+      let weaknesses = responseBody.damage_relations.double_damage_from;
+
+      for(weakness in weaknesses) {
+        pokemonWeakness = weaknesses[weakness].name;
+        pokemonWeaknessBG = pokemonColours[pokemonWeakness];
+        document.body.style.setProperty(`--main-weakness-bg-color${pokemon}`, pokemonColours[pokemonWeakness])
+        $('.pokemonweakness').append("<span class='pokemonWeakness" + weakness + "' style='background-color:" + pokemonWeaknessBG + "; display:inline;'>" + pokemonWeakness + "</span> ");
+      }
 
     })
     .catch(err => console.error(err))
-
-    //getting weaknesses of the choosen pokemon
-    // $.get("http://pokeapi.co/api/v2/type/" + pokemontype1, function(data) {
-    //   $('.pokemonweakness').html("");
-    //
-    //
-    //
-    //   for (var i = 0; i < data.damage_relations.double_damage_from.length; i++) {
-    //     pokemonweakness = data.damage_relations.double_damage_from[i].name;
-    //
-    //     //Setting background colours of weaknesses
-    //     switch (pokemonweakness) {
-    //       case "ground":
-    //         pokemonweaknessBG = pokemonColours.groundbrown;
-    //         break;
-    //       case "grass":
-    //         pokemonweaknessBG = pokemonColours.grassgreen;
-    //         break;
-    //       case "poison":
-    //         pokemonweaknessBG = pokemonColours.poisonpurple;
-    //         break;
-    //       case "fire":
-    //         pokemonweaknessBG = pokemonColours.firered;
-    //         break;
-    //       case "flying":
-    //         pokemonweaknessBG = pokemonColours.flyingteal;
-    //         break;
-    //       case "water":
-    //         pokemonweaknessBG = pokemonColours.waterblue;
-    //         break;
-    //       case "bug":
-    //         pokemonweaknessBG = pokemonColours.buggreen;
-    //         break;
-    //       case "normal":
-    //         pokemonweaknessBG = pokemonColours.normalgrey;
-    //         break;
-    //       case "electric":
-    //         pokemonweaknessBG = pokemonColours.electricyellow;
-    //         break;
-    //       case "fairy":
-    //         pokemonweaknessBG = pokemonColours.fairypink;
-    //         break;
-    //       case "fighting":
-    //         pokemonweaknessBG = pokemonColours.fightingbrown;
-    //         break;
-    //       case "psychic":
-    //         pokemonweaknessBG = pokemonColours.psychicpink;
-    //         break;
-    //       case "rock":
-    //         pokemonweaknessBG = pokemonColours.rockbrown;
-    //         break;
-    //       case "ice":
-    //         pokemonweaknessBG = pokemonColours.iceteal;
-    //         break;
-    //       case "ghost":
-    //         pokemonweaknessBG = pokemonColours.ghostpurple;
-    //         break;
-    //       case "dragon":
-    //         pokemonweaknessBG = pokemonColours.dragonblue;
-    //         break;
-    //       case "steel":
-    //         pokemonweaknessBG = pokemonColours.steelgrey;
-    //         break;
-    //       case "dark":
-    //         pokemonweaknessBG = pokemonColours.darkblack;
-    //         break;
-    //       default:
-    //         pokemonweaknessBG = pokemonColours.firered;
-    //     }
-    //
-    //
-    //     $('.pokemonweakness').append("<span class='pokemontype1' style='background-color:" + pokemonweaknessBG + "; display:inline;'>" + pokemonweakness + "</span> ");
-    //   }
-    //
-    //
-    // });
-
 }
