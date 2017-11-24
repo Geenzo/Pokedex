@@ -5,24 +5,27 @@ var pokemonname = 0;
 var pokemonweaknessBG = 0;
 
 //setting colours for types of pokemon
-var groundbrown = 'rgb(210, 179, 92)';
-var grassgreen = 'rgb(79, 179, 29)';
-var poisonpurple = 'rgb(175, 49, 175)';
-var firered = 'rgb(241, 23, 23)';
-var flyingteal = 'rgb(161, 138, 229)';
-var waterblue = 'rgb(69, 120, 237)';
-var buggreen = 'rgb(64, 128, 32)';
-var normalgrey = 'rgb(156, 156, 99)';
-var electricyellow = 'rgb(246, 201, 19)';
-var fairypink = 'rgb(232, 120, 144)';
-var fightingbrown = 'rgb(123, 30, 25)';
-var psychicpink = 'rgb(212, 53, 101)';
-var rockbrown = 'rgb(164, 143, 50)';
-var iceteal = 'rgb(126, 206, 206)';
-var ghostpurple = 'rgb(100, 78, 136)';
-var dragonblue = 'rgb(94, 29, 247)';
-var steelgrey = 'rgb(160, 160, 192)';
-var darkblack = 'rgb(62, 49, 40)';
+let pokemonColours = {
+  "groundbrown": 'rgb(210, 179, 92)',
+  "grassgreen": 'rgb(79, 179, 29)',
+  "poisonpurple": 'rgb(175, 49, 175)',
+  "firered": 'rgb(241, 23, 23)',
+  "flyingteal": 'rgb(161, 138, 229)',
+  "waterblue": 'rgb(69, 120, 237)',
+  "buggreen": 'rgb(64, 128, 32)',
+  "normalgrey": 'rgb(156, 156, 99)',
+  "electricyellow": 'rgb(246, 201, 19)',
+  "fairypink": 'rgb(232, 120, 144)',
+  "fightingbrown": 'rgb(123, 30, 25)',
+  "psychicpink": 'rgb(212, 53, 101)',
+  "rockbrown": 'rgb(164, 143, 50)',
+  "iceteal": 'rgb(126, 206, 206)',
+  "ghostpurple": 'rgb(100, 78, 136)',
+  "dragonblue": 'rgb(94, 29, 247)',
+  "steelgrey": 'rgb(160, 160, 192)',
+  "darkblack": 'rgb(62, 49, 40)'
+
+}
 
 function GetPokeNumber() {
   var pokeidentifier = document.getElementById('pokeidentifier').value;
@@ -52,61 +55,61 @@ function GetPokeNumber() {
 
     switch (pokemontype1) {
       case "ground":
-        document.body.style.setProperty('--main-bg-color', groundbrown);
+        document.body.style.setProperty('--main-bg-color', pokemonColours.groundbrown);
         break;
       case "grass":
-        document.body.style.setProperty('--main-bg-color', grassgreen);
+        document.body.style.setProperty('--main-bg-color', pokemonColours.grassgreen);
         break;
       case "poison":
-        document.body.style.setProperty('--main-bg-color', poisonpurple);
+        document.body.style.setProperty('--main-bg-color', pokemonColours.poisonpurple);
         break;
       case "fire":
-        document.body.style.setProperty('--main-bg-color', firered);
+        document.body.style.setProperty('--main-bg-color', pokemonColours.firered);
         break;
       case "flying":
-        document.body.style.setProperty('--main-bg-color', flyingteal);
+        document.body.style.setProperty('--main-bg-color', pokemonColours.flyingteal);
         break;
       case "water":
-        document.body.style.setProperty('--main-bg-color', waterblue);
+        document.body.style.setProperty('--main-bg-color', pokemonColours.waterblue);
         break;
       case "bug":
-        document.body.style.setProperty('--main-bg-color', buggreen);
+        document.body.style.setProperty('--main-bg-color', pokemonColours.buggreen);
         break;
       case "normal":
-        document.body.style.setProperty('--main-bg-color', normalgrey);
+        document.body.style.setProperty('--main-bg-color', pokemonColours.normalgrey);
         break;
       case "electric":
-        document.body.style.setProperty('--main-bg-color', electricyellow);
+        document.body.style.setProperty('--main-bg-color', pokemonColours.electricyellow);
         break;
       case "fairy":
-        document.body.style.setProperty('--main-bg-color', fairypink);
+        document.body.style.setProperty('--main-bg-color', pokemonColours.fairypink);
         break;
       case "fighting":
-        document.body.style.setProperty('--main-bg-color', fightingbrown);
+        document.body.style.setProperty('--main-bg-color', pokemonColours.fightingbrown);
         break;
       case "psychic":
-        document.body.style.setProperty('--main-bg-color', psychicpink);
+        document.body.style.setProperty('--main-bg-color', pokemonColours.psychicpink);
         break;
       case "rock":
-        document.body.style.setProperty('--main-bg-color', rockbrown);
+        document.body.style.setProperty('--main-bg-color', pokemonColours.rockbrown);
         break;
       case "ice":
-        document.body.style.setProperty('--main-bg-color', iceteal);
+        document.body.style.setProperty('--main-bg-color', pokemonColours.iceteal);
         break;
       case "ghost":
-        document.body.style.setProperty('--main-bg-color', ghostpurple);
+        document.body.style.setProperty('--main-bg-color', pokemonColours.ghostpurple);
         break;
       case "dragon":
-        document.body.style.setProperty('--main-bg-color', dragonblue);
+        document.body.style.setProperty('--main-bg-color', pokemonColours.dragonblue);
         break;
       case "steel":
-        document.body.style.setProperty('--main-bg-color', steelgrey);
+        document.body.style.setProperty('--main-bg-color', pokemonColours.steelgrey);
         break;
       case "dark":
-        document.body.style.setProperty('--main-bg-color', darkblack);
+        document.body.style.setProperty('--main-bg-color', pokemonColours.darkblack);
         break;
       default:
-        document.body.style.setProperty('--main-bg-color', firered);
+        document.body.style.setProperty('--main-bg-color', pokemonColours.firered);
     }
 
 
@@ -132,61 +135,61 @@ function GetPokeNumber() {
         //Setting background colours of weaknesses
         switch (pokemonweakness) {
           case "ground":
-            pokemonweaknessBG = groundbrown;
+            pokemonweaknessBG = pokemonColours.groundbrown;
             break;
           case "grass":
-            pokemonweaknessBG = grassgreen;
+            pokemonweaknessBG = pokemonColours.grassgreen;
             break;
           case "poison":
-            pokemonweaknessBG = poisonpurple;
+            pokemonweaknessBG = pokemonColours.poisonpurple;
             break;
           case "fire":
-            pokemonweaknessBG = firered;
+            pokemonweaknessBG = pokemonColours.firered;
             break;
           case "flying":
-            pokemonweaknessBG = flyingteal;
+            pokemonweaknessBG = pokemonColours.flyingteal;
             break;
           case "water":
-            pokemonweaknessBG = waterblue;
+            pokemonweaknessBG = pokemonColours.waterblue;
             break;
           case "bug":
-            pokemonweaknessBG = buggreen;
+            pokemonweaknessBG = pokemonColours.buggreen;
             break;
           case "normal":
-            pokemonweaknessBG = normalgrey;
+            pokemonweaknessBG = pokemonColours.normalgrey;
             break;
           case "electric":
-            pokemonweaknessBG = electricyellow;
+            pokemonweaknessBG = pokemonColours.electricyellow;
             break;
           case "fairy":
-            pokemonweaknessBG = fairypink;
+            pokemonweaknessBG = pokemonColours.fairypink;
             break;
           case "fighting":
-            pokemonweaknessBG = fightingbrown;
+            pokemonweaknessBG = pokemonColours.fightingbrown;
             break;
           case "psychic":
-            pokemonweaknessBG = psychicpink;
+            pokemonweaknessBG = pokemonColours.psychicpink;
             break;
           case "rock":
-            pokemonweaknessBG = rockbrown;
+            pokemonweaknessBG = pokemonColours.rockbrown;
             break;
           case "ice":
-            pokemonweaknessBG = iceteal;
+            pokemonweaknessBG = pokemonColours.iceteal;
             break;
           case "ghost":
-            pokemonweaknessBG = ghostpurple;
+            pokemonweaknessBG = pokemonColours.ghostpurple;
             break;
           case "dragon":
-            pokemonweaknessBG = dragonblue;
+            pokemonweaknessBG = pokemonColours.dragonblue;
             break;
           case "steel":
-            pokemonweaknessBG = steelgrey;
+            pokemonweaknessBG = pokemonColours.steelgrey;
             break;
           case "dark":
-            pokemonweaknessBG = darkblack;
+            pokemonweaknessBG = pokemonColours.darkblack;
             break;
           default:
-            pokemonweaknessBG = firered;
+            pokemonweaknessBG = pokemonColours.firered;
         }
 
 
