@@ -41,28 +41,36 @@ function GetPokeNumber() {
     })
     .then(responseBody => {
       console.log(responseBody)
-      pokemonid = responseBody.id;
-      pokemonheight = responseBody.height;
-      pokemonweight = responseBody.weight;
-      pokemonname = responseBody.name;
-      pokemonsprite = responseBody.sprites.front_default;
-      pokemonweakness = 0;
-      pokemonabilities = 0;
+      pokemonID = responseBody.id;
+      pokemonHeight = responseBody.height;
+      pokemonWeight = responseBody.weight;
+      pokemonName = responseBody.name;
+      pokemonSprite = responseBody.sprites.front_default;
+      pokemonWeakness = 0;
+      pokemonAbilities = 0;
 
       //for checking if one pokemon has multiple types -----------turn into for loop or while -----
-      pokemontype = responseBody.types;
-      console.log(pokemontype)
-      if (pokemontype.length > 1) {
-        pokemontype1 = pokemontype[0].type.name;
-        pokemontype2 = pokemontype[1].type.name;
-        $('.pokemontype1').html(pokemontype1).css("display", "inline");
-        $('.pokemontype2').html(pokemontype2).css("display", "inline");
-      } else {
-        pokemontype1 = pokemontype[0].type.name;
-        $('.pokemontype1').html(pokemontype1).css("display", "inline");
+      pokemonType = responseBody.types;
+      console.log(pokemonType)
+
+      for(pokemon in pokemonType) {
+        pokemonType[pokemon] = pokemonType[pokemon].type.name;
+        console.log(pokemonType[pokemon])
+        console.log(`.pokemontype${pokemon}`)
+        $(`.pokemontype${pokemon}`).html(pokemonType[pokemon]).css("display", "inline");
       }
 
-      switch (pokemontype1) {
+      // if (pokemontype.length > 1) {
+      //   pokemontype1 = pokemontype[0].type.name;
+      //   pokemontype2 = pokemontype[1].type.name;
+      //   $('.pokemontype1').html(pokemontype1).css("display", "inline");
+      //   $('.pokemontype2').html(pokemontype2).css("display", "inline");
+      // } else {
+      //   pokemontype1 = pokemontype[0].type.name;
+      //   $('.pokemontype1').html(pokemontype1).css("display", "inline");
+      // }
+
+      switch (pokemonType1) {
         case "ground":
           document.body.style.setProperty('--main-bg-color', pokemonColours.groundbrown);
           break;

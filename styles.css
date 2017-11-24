@@ -56,7 +56,7 @@ html, body {
   margin: 15px;
 }
 
-.pokemontype1 {
+.pokemontype0 {
   background-color: var(--main-bg-color);
   padding: 10px;
   border-radius: 15px;
@@ -64,7 +64,7 @@ html, body {
   color: white;
 }
 
-.pokemontype2 {
+.pokemontype1 {
   background-color: var(--main-bg-color);
   padding: 10px;
   border-radius: 15px;
