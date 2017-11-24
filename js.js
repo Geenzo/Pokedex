@@ -7,24 +7,24 @@ var pokemonweaknessBG = 0;
 
 //setting colours for types of pokemon
 let pokemonColours = {
-  "groundbrown": 'rgb(210, 179, 92)',
-  "grassgreen": 'rgb(79, 179, 29)',
-  "poisonpurple": 'rgb(175, 49, 175)',
-  "firered": 'rgb(241, 23, 23)',
-  "flyingteal": 'rgb(161, 138, 229)',
-  "waterblue": 'rgb(69, 120, 237)',
-  "buggreen": 'rgb(64, 128, 32)',
-  "normalgrey": 'rgb(156, 156, 99)',
-  "electricyellow": 'rgb(246, 201, 19)',
-  "fairypink": 'rgb(232, 120, 144)',
-  "fightingbrown": 'rgb(123, 30, 25)',
-  "psychicpink": 'rgb(212, 53, 101)',
-  "rockbrown": 'rgb(164, 143, 50)',
-  "iceteal": 'rgb(126, 206, 206)',
-  "ghostpurple": 'rgb(100, 78, 136)',
-  "dragonblue": 'rgb(94, 29, 247)',
-  "steelgrey": 'rgb(160, 160, 192)',
-  "darkblack": 'rgb(62, 49, 40)'
+  "ground": 'rgb(210, 179, 92)',
+  "grass": 'rgb(79, 179, 29)',
+  "poison": 'rgb(175, 49, 175)',
+  "fire": 'rgb(241, 23, 23)',
+  "flying": 'rgb(161, 138, 229)',
+  "water": 'rgb(69, 120, 237)',
+  "bug": 'rgb(64, 128, 32)',
+  "normal": 'rgb(156, 156, 99)',
+  "electric": 'rgb(246, 201, 19)',
+  "fairy": 'rgb(232, 120, 144)',
+  "fighting": 'rgb(123, 30, 25)',
+  "psychic": 'rgb(212, 53, 101)',
+  "rock": 'rgb(164, 143, 50)',
+  "ice": 'rgb(126, 206, 206)',
+  "ghost": 'rgb(100, 78, 136)',
+  "dragon": 'rgb(94, 29, 247)',
+  "steel": 'rgb(160, 160, 192)',
+  "dark": 'rgb(62, 49, 40)'
 
 }
 
@@ -49,100 +49,31 @@ function GetPokeNumber() {
       pokemonWeakness = 0;
       pokemonAbilities = 0;
 
-      //for checking if one pokemon has multiple types -----------turn into for loop or while -----
       pokemonType = responseBody.types;
+      $(`.pokemontype0`).html(pokemonType).css("display", "none")
+      $(`.pokemontype1`).html(pokemonType).css("display", "none")
       console.log(pokemonType)
 
       for(pokemon in pokemonType) {
-        pokemonType[pokemon] = pokemonType[pokemon].type.name;
-        console.log(pokemonType[pokemon])
+        pokemonsType = pokemonType[pokemon].type.name;
+        console.log(pokemonsType)
         console.log(`.pokemontype${pokemon}`)
-        $(`.pokemontype${pokemon}`).html(pokemonType[pokemon]).css("display", "inline");
+        $(`.pokemontype${pokemon}`).html(pokemonsType).css("display", "inline");
+        document.body.style.setProperty(`--main-bg-color${pokemon}`, pokemonColours[pokemonsType])
       }
-
-      // if (pokemontype.length > 1) {
-      //   pokemontype1 = pokemontype[0].type.name;
-      //   pokemontype2 = pokemontype[1].type.name;
-      //   $('.pokemontype1').html(pokemontype1).css("display", "inline");
-      //   $('.pokemontype2').html(pokemontype2).css("display", "inline");
-      // } else {
-      //   pokemontype1 = pokemontype[0].type.name;
-      //   $('.pokemontype1').html(pokemontype1).css("display", "inline");
-      // }
-
-      switch (pokemonType1) {
-        case "ground":
-          document.body.style.setProperty('--main-bg-color', pokemonColours.groundbrown);
-          break;
-        case "grass":
-          document.body.style.setProperty('--main-bg-color', pokemonColours.grassgreen);
-          break;
-        case "poison":
-          document.body.style.setProperty('--main-bg-color', pokemonColours.poisonpurple);
-          break;
-        case "fire":
-          document.body.style.setProperty('--main-bg-color', pokemonColours.firered);
-          break;
-        case "flying":
-          document.body.style.setProperty('--main-bg-color', pokemonColours.flyingteal);
-          break;
-        case "water":
-          document.body.style.setProperty('--main-bg-color', pokemonColours.waterblue);
-          break;
-        case "bug":
-          document.body.style.setProperty('--main-bg-color', pokemonColours.buggreen);
-          break;
-        case "normal":
-          document.body.style.setProperty('--main-bg-color', pokemonColours.normalgrey);
-          break;
-        case "electric":
-          document.body.style.setProperty('--main-bg-color', pokemonColours.electricyellow);
-          break;
-        case "fairy":
-          document.body.style.setProperty('--main-bg-color', pokemonColours.fairypink);
-          break;
-        case "fighting":
-          document.body.style.setProperty('--main-bg-color', pokemonColours.fightingbrown);
-          break;
-        case "psychic":
-          document.body.style.setProperty('--main-bg-color', pokemonColours.psychicpink);
-          break;
-        case "rock":
-          document.body.style.setProperty('--main-bg-color', pokemonColours.rockbrown);
-          break;
-        case "ice":
-          document.body.style.setProperty('--main-bg-color', pokemonColours.iceteal);
-          break;
-        case "ghost":
-          document.body.style.setProperty('--main-bg-color', pokemonColours.ghostpurple);
-          break;
-        case "dragon":
-          document.body.style.setProperty('--main-bg-color', pokemonColours.dragonblue);
-          break;
-        case "steel":
-          document.body.style.setProperty('--main-bg-color', pokemonColours.steelgrey);
-          break;
-        case "dark":
-          document.body.style.setProperty('--main-bg-color', pokemonColours.darkblack);
-          break;
-        default:
-          document.body.style.setProperty('--main-bg-color', pokemonColours.firered);
-      }
-
-
 
       //looping through abilities and appending them into pokeabilities span
       $('.pokeabilities').html("");
 
       for (var i = 0; i < responseBody.abilities.length; i++) {
-        pokemonabilities = responseBody.abilities[i].ability.name;
-        $('.pokeabilities').append(pokemonabilities + "<br>");
+        pokemonAbilities = responseBody.abilities[i].ability.name;
+        $('.pokeabilities').append(pokemonAbilities + "<br>");
       }
 
-      $('.pokename').html("#" + pokemonid + " " + pokemonname);
-      $('.pokeweight').html(pokemonweight + "cm");
-      $('.pokeheight').html(pokemonheight);
-      $('.pokesprite').html('<img src="' + pokemonsprite + '">');
+      $('.pokename').html("#" + pokemonID + " " + pokemonName);
+      $('.pokeweight').html(pokemonWeight + "cm");
+      $('.pokeheight').html(pokemonHeight);
+      $('.pokesprite').html('<img src="' + pokemonSprite + '">');
 
 
 

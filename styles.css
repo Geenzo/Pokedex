@@ -4,7 +4,7 @@ html, body {
   margin: 0;
   background-color: #157991;
   font-family: sans-serif;
-  --main-bg-color: #9C0000;
+  --main-bg-color0: #9C0000;
 }
 
 .result {
@@ -19,7 +19,7 @@ html, body {
 }
 
 .headerbar {
-  background-color: var(--main-bg-color);
+  background-color: var(--main-bg-color0);
   border-top-right-radius: 20px;
   border-top-left-radius: 20px;
   width: 100%;
@@ -28,7 +28,7 @@ html, body {
 }
 
 .contentbar {
-  background-color: var(--main-bg-color);
+  background-color: var(--main-bg-color0);
   width: 100%;
   text-align: center;
   color: white;
@@ -57,7 +57,7 @@ html, body {
 }
 
 .pokemontype0 {
-  background-color: var(--main-bg-color);
+  background-color: var(--main-bg-color0);
   padding: 10px;
   border-radius: 15px;
   display: none;
@@ -65,7 +65,7 @@ html, body {
 }
 
 .pokemontype1 {
-  background-color: var(--main-bg-color);
+  background-color: var(--main-bg-color1);
   padding: 10px;
   border-radius: 15px;
   display: none;
